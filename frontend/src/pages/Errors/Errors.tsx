@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Table, notification } from 'antd'
 import { ColumnsType } from 'antd/es/table'
 import { isoTimestampToHumanReadable } from '../../utils/dateUtils'
-import { ENVIRONEMT_CONSTANTS } from 'lib/constants'
+import { ENVIRONEMT_CONSTANTS } from '../../lib/constants'
 
 const hostname = ENVIRONEMT_CONSTANTS.CLICKHOUSE_HOST
 

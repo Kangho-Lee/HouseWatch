@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Pie } from '@ant-design/plots'
 import { Card, Spin, Row, Col, notification } from 'antd'
-import { ENVIRONEMT_CONSTANTS } from 'lib/constants'
+import { ENVIRONEMT_CONSTANTS } from '../../lib/constants'
 
 const hostname = ENVIRONEMT_CONSTANTS.CLICKHOUSE_HOST
 

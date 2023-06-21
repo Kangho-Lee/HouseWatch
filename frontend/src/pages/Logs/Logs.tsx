@@ -1,7 +1,7 @@
 import { Table, Typography, Input, Card, ConfigProvider, Empty } from 'antd'
 import React, { useEffect, useState } from 'react'
 import { Column } from '@ant-design/charts'
-import { ENVIRONEMT_CONSTANTS } from 'lib/constants'
+import { ENVIRONEMT_CONSTANTS } from '../../lib/constants'
 
 const hostname = ENVIRONEMT_CONSTANTS.CLICKHOUSE_HOST
 const { Paragraph } = Typography

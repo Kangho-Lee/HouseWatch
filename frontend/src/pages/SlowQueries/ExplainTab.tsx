@@ -8,7 +8,7 @@ import Editor from 'react-simple-code-editor'
 // @ts-ignore
 import { NoDataSpinner, QueryDetailData, copyToClipboard } from './QueryDetail'
 import { notification } from 'antd'
-import { ENVIRONEMT_CONSTANTS } from 'lib/constants'
+import { ENVIRONEMT_CONSTANTS } from '../../lib/constants'
 
 const hostname = ENVIRONEMT_CONSTANTS.CLICKHOUSE_HOST
 

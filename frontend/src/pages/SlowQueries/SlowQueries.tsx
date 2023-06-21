@@ -3,7 +3,7 @@ import { Select, Table, Typography, notification } from 'antd'
 import { useHistory } from 'react-router-dom'
 import { ColumnType } from 'antd/es/table'
 const { Paragraph } = Typography
-import { ENVIRONEMT_CONSTANTS } from 'lib/constants'
+import { ENVIRONEMT_CONSTANTS } from '../../lib/constants'
 
 const hostname = ENVIRONEMT_CONSTANTS.CLICKHOUSE_HOST
 

@@ -2,7 +2,7 @@ import { Table, Button, notification, Typography } from 'antd'
 import { usePollingEffect } from '../../utils/usePollingEffect'
 import React, { useState } from 'react'
 import { ColumnType } from 'antd/es/table'
-import { ENVIRONEMT_CONSTANTS } from 'lib/constants'
+import { ENVIRONEMT_CONSTANTS } from '../../lib/constants'
 
 const hostname = ENVIRONEMT_CONSTANTS.CLICKHOUSE_HOST
 const { Paragraph } = Typography

@@ -5,7 +5,7 @@ import SavedQuery from './SavedQuery'
 import { ReloadOutlined } from '@ant-design/icons'
 import { useHistory } from 'react-router-dom'
 import { isoTimestampToHumanReadable } from '../../utils/dateUtils'
-import { ENVIRONEMT_CONSTANTS } from 'lib/constants'
+import { ENVIRONEMT_CONSTANTS } from '../../lib/constants'
 
 const hostname = ENVIRONEMT_CONSTANTS.CLICKHOUSE_HOST
 

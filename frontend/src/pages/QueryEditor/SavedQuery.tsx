@@ -6,7 +6,7 @@ import 'prismjs/components/prism-sql'
 import 'prismjs/themes/prism.css'
 import Editor from 'react-simple-code-editor'
 import { SavedQueryData } from './SavedQueries'
-import { ENVIRONEMT_CONSTANTS } from 'lib/constants'
+import { ENVIRONEMT_CONSTANTS } from '../../lib/constants'
 
 const hostname = ENVIRONEMT_CONSTANTS.CLICKHOUSE_HOST
 

@@ -4,7 +4,7 @@ import { Line } from '@ant-design/plots'
 import { Card, Col, Row, Tooltip, notification } from 'antd'
 import { InfoCircleOutlined } from '@ant-design/icons'
 import { NoDataSpinner, QueryDetailData } from './QueryDetail'
-import { ENVIRONEMT_CONSTANTS } from 'lib/constants'
+import { ENVIRONEMT_CONSTANTS } from '../../lib/constants'
 
 const hostname = ENVIRONEMT_CONSTANTS.CLICKHOUSE_HOST
 

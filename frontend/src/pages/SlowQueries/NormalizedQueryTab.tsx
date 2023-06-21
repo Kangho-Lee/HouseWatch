@@ -9,7 +9,7 @@ import Editor from 'react-simple-code-editor'
 import { format } from 'sql-formatter-plus'
 import { NoDataSpinner, copyToClipboard } from './QueryDetail'
 import { notification } from 'antd'
-import { ENVIRONEMT_CONSTANTS } from 'lib/constants'
+import { ENVIRONEMT_CONSTANTS } from '../../lib/constants'
 
 const hostname = ENVIRONEMT_CONSTANTS.CLICKHOUSE_HOST
 

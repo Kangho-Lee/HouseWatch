@@ -10,7 +10,7 @@ import { Button, Input, Progress, Table, Tabs, notification } from 'antd'
 import TextArea from 'antd/es/input/TextArea'
 import { ColumnType } from 'antd/es/table'
 import { isoTimestampToHumanReadable } from '../../utils/dateUtils'
-import { ENVIRONEMT_CONSTANTS } from 'lib/constants'
+import { ENVIRONEMT_CONSTANTS } from '../../lib/constants'
 
 const hostname = ENVIRONEMT_CONSTANTS.CLICKHOUSE_HOST
 

@@ -4,7 +4,7 @@ import { Treemap } from '@ant-design/charts'
 import { Spin, Table } from 'antd'
 
 import { useHistory } from 'react-router-dom'
-import { ENVIRONEMT_CONSTANTS } from 'lib/constants'
+import { ENVIRONEMT_CONSTANTS } from '../../lib/constants'
 
 const hostname = ENVIRONEMT_CONSTANTS.CLICKHOUSE_HOST
 

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Tabs } from 'antd'
 import { useHistory } from 'react-router-dom'
 import NaturalLanguageQueryEditor from './NaturalLanguageQueryEditor'
-import { ENVIRONEMT_CONSTANTS } from 'lib/constants'
+import { ENVIRONEMT_CONSTANTS } from '../../lib/constants'
 
 const hostname = ENVIRONEMT_CONSTANTS.CLICKHOUSE_HOST
 
