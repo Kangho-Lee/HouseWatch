@@ -29,7 +29,7 @@ import { ConfigProvider, MenuProps } from 'antd'
 import { Layout, Menu } from 'antd'
 import QueryEditorPage from './pages/QueryEditor/QueryEditorPage'
 import AIToolsPage from './pages/AITools/AIToolsPage'
-import { ENVIRONEMT_CONSTANTS } from 'src/lib/constants'
+import { ENVIRONEMT_CONSTANTS } from './lib/constants'
 
 const { Header, Content, Footer, Sider } = Layout
 
