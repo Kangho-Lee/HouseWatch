@@ -31,8 +31,6 @@ import QueryEditorPage from './pages/QueryEditor/QueryEditorPage'
 import AIToolsPage from './pages/AITools/AIToolsPage'
 import { ENVIRONEMT_CONSTANTS } from 'src/lib/constants'
 
-const clickhouse_hostname = object.keys(ENVIRONEMT_CONSTANTS.CLICKHOUSE_HOST)
-
 const { Header, Content, Footer, Sider } = Layout
 
 type MenuItem = Required<MenuProps>['items'][number]
@@ -54,7 +52,7 @@ export default function AppLayout(): JSX.Element {
     const [hostname, setHostname] = useState('')
 
     const fetchHostname = async () => {
-        const response = await fetch(`http://${clickhouse_hostname}:8000/api/analyze/hostname`)
+        const response = await fetch(`http://${ENVIRONEMT_CONSTANTS.CLICKHOUSE_HOST}:8000/api/analyze/hostname`)
         const responseJson = await response.json()
         setHostname(responseJson.hostname)
     }
