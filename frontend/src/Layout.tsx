@@ -31,7 +31,7 @@ import QueryEditorPage from './pages/QueryEditor/QueryEditorPage'
 import AIToolsPage from './pages/AITools/AIToolsPage'
 import { ENVIRONEMT_CONSTANTS } from 'lib/constants'
 
-const hostname = ENVIRONEMT_CONSTANTS.CLICKHOUSE_HOST
+const clickhouse_hostname = ENVIRONEMT_CONSTANTS.CLICKHOUSE_HOST
 
 const { Header, Content, Footer, Sider } = Layout
 
@@ -54,7 +54,7 @@ export default function AppLayout(): JSX.Element {
     const [hostname, setHostname] = useState('')
 
     const fetchHostname = async () => {
-        const response = await fetch(`http://${hostname}:8000/api/analyze/hostname`)
+        const response = await fetch(`http://${clickhouse_hostname}:8000/api/analyze/hostname`)
         const responseJson = await response.json()
         setHostname(responseJson.hostname)
     }
