@@ -2,7 +2,9 @@ import { Table, Button, notification, Typography } from 'antd'
 import { usePollingEffect } from '../../utils/usePollingEffect'
 import React, { useState } from 'react'
 import { ColumnType } from 'antd/es/table'
+import { ENVIRONEMT_CONSTANTS } from 'lib/constants'
 
+const hostname = ENVIRONEMT_CONSTANTS.CLICKHOUSE_HOST
 const { Paragraph } = Typography
 
 interface RunningQueryData {
@@ -21,7 +23,7 @@ function KillQueryButton({ queryId }: any) {
     const killQuery = async () => {
         setIsLoading(true)
         try {
-            const res = await fetch(`http://localhost:8000/api/analyze/${queryId}/kill_query`, {
+            const res = await fetch(`http://${hostname}:8000/api/analyze/${queryId}/kill_query`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
@@ -97,7 +99,7 @@ export default function RunningQueries() {
         async () => {
             setRunningQueries([])
             setLoadingRunningQueries(true)
-            const res = await fetch('http://localhost:8000/api/analyze/running_queries')
+            const res = await fetch(`http://${hostname}:8000/api/analyze/running_queries`)
             const resJson = await res.json()
             setRunningQueries(resJson)
             setLoadingRunningQueries(false)

@@ -5,6 +5,9 @@ import SavedQuery from './SavedQuery'
 import { ReloadOutlined } from '@ant-design/icons'
 import { useHistory } from 'react-router-dom'
 import { isoTimestampToHumanReadable } from '../../utils/dateUtils'
+import { ENVIRONEMT_CONSTANTS } from 'lib/constants'
+
+const hostname = ENVIRONEMT_CONSTANTS.CLICKHOUSE_HOST
 
 export interface SavedQueryData {
     id: number
@@ -18,7 +21,7 @@ export default function SavedQueries({ match }: { match: { params: { id: string 
     const history = useHistory()
 
     const loadData = async () => {
-        const res = await fetch('http://localhost:8000/api/saved_queries')
+        const res = await fetch(`http://${hostname}:8000/api/saved_queries`)
         const resJson = await res.json()
         setSavedQueries(resJson.results)
         if (match && match.params && match.params.id) {

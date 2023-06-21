@@ -8,6 +8,9 @@ import 'prismjs/themes/prism.css'
 import Editor from 'react-simple-code-editor'
 // @ts-ignore
 import { format } from 'sql-formatter-plus'
+import { ENVIRONEMT_CONSTANTS } from 'lib/constants'
+
+const hostname = ENVIRONEMT_CONSTANTS.CLICKHOUSE_HOST
 
 export interface TableData {
     table: string
@@ -29,7 +32,7 @@ export default function NaturalLanguageQueryEditor() {
     const runQuery = async () => {
         setLoading(true)
         setSql(null)
-        const res = await fetch('http://localhost:8000/api/analyze/natural_language_query', {
+        const res = await fetch(`http://${hostname}:8000/api/analyze/natural_language_query`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -51,7 +54,7 @@ export default function NaturalLanguageQueryEditor() {
         setLoading(false)
     }
     const loadTableData = async () => {
-        const res = await fetch('http://localhost:8000/api/analyze/tables')
+        const res = await fetch(`http://${hostname}:8000/api/analyze/tables`)
         const resJson = await res.json()
         setTables(resJson)
     }

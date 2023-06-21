@@ -9,13 +9,16 @@ import Editor from 'react-simple-code-editor'
 import { format } from 'sql-formatter-plus'
 import { NoDataSpinner, copyToClipboard } from './QueryDetail'
 import { notification } from 'antd'
+import { ENVIRONEMT_CONSTANTS } from 'lib/constants'
+
+const hostname = ENVIRONEMT_CONSTANTS.CLICKHOUSE_HOST
 
 export default function NormalizedQueryTab({ query_hash }: { query_hash: string }) {
     const [data, setData] = useState<{ query: string } | null>(null)
 
     const loadData = async () => {
         try {
-            const res = await fetch(`http://localhost:8000/api/analyze/${query_hash}/query_normalized`)
+            const res = await fetch(`http://${hostname}:8000/api/analyze/${query_hash}/query_normalized`)
             const resJson = await res.json()
             setData(resJson)
         } catch {

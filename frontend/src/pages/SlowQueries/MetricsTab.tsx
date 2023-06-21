@@ -4,6 +4,9 @@ import { Line } from '@ant-design/plots'
 import { Card, Col, Row, Tooltip, notification } from 'antd'
 import { InfoCircleOutlined } from '@ant-design/icons'
 import { NoDataSpinner, QueryDetailData } from './QueryDetail'
+import { ENVIRONEMT_CONSTANTS } from 'lib/constants'
+
+const hostname = ENVIRONEMT_CONSTANTS.CLICKHOUSE_HOST
 
 export default function MetricsTab({ query_hash }: { query_hash: string }) {
     const [data, setData] = useState<Omit<QueryDetailData, 'explain' | 'normalized_query' | 'example_queries'> | null>(
@@ -12,7 +15,7 @@ export default function MetricsTab({ query_hash }: { query_hash: string }) {
 
     const loadData = async () => {
         try {
-            const res = await fetch(`http://localhost:8000/api/analyze/${query_hash}/query_metrics`)
+            const res = await fetch(`http://${hostname}:8000/api/analyze/${query_hash}/query_metrics`)
             const resJson = await res.json()
             setData(resJson)
         } catch {

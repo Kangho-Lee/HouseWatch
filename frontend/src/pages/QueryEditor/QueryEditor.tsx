@@ -7,6 +7,9 @@ import 'prismjs/themes/prism.css'
 import Editor from 'react-simple-code-editor'
 import { v4 as uuidv4 } from 'uuid'
 import { SaveOutlined } from '@ant-design/icons'
+import { ENVIRONEMT_CONSTANTS } from 'lib/constants'
+
+const hostname = ENVIRONEMT_CONSTANTS.CLICKHOUSE_HOST
 
 function CreateSavedQueryModal({
     modalOpen = false,
@@ -46,7 +49,7 @@ export default function QueryEditor() {
 
     const saveQuery = async (queryName: string) => {
         try {
-            const res = await fetch('http://localhost:8000/api/saved_queries', {
+            const res = await fetch(`http://${hostname}:8000/api/saved_queries`, {
                 method: 'POST',
                 body: JSON.stringify({ name: queryName, query: sql }),
                 headers: {
@@ -69,7 +72,7 @@ export default function QueryEditor() {
         try {
             setData([])
             setError('')
-            const res = await fetch('http://localhost:8000/api/analyze/query', {
+            const res = await fetch(`http://${hostname}:8000/api/analyze/query`, {
                 method: 'POST',
                 body: JSON.stringify({ sql, query_id: queryId }),
                 headers: {
@@ -90,7 +93,7 @@ export default function QueryEditor() {
 
     const cancelRunningQuery = async () => {
         if (runningQueryId) {
-            await fetch(`http://localhost:8000/api/analyze/${runningQueryId}/kill_query`, {
+            await fetch(`http://${hostname}:8000/api/analyze/${runningQueryId}/kill_query`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',

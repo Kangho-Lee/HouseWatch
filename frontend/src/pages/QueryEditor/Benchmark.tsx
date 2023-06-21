@@ -6,6 +6,9 @@ import 'prismjs/components/prism-sql'
 import 'prismjs/themes/prism.css'
 import Editor from 'react-simple-code-editor'
 import { Column } from '@ant-design/charts'
+import { ENVIRONEMT_CONSTANTS } from 'lib/constants'
+
+const hostname = ENVIRONEMT_CONSTANTS.CLICKHOUSE_HOST
 
 export interface BenchmarkingData {
     benchmarking_result: {
@@ -47,7 +50,7 @@ export default function QueryBenchmarking() {
         try {
             setData(null)
             setError(null)
-            const res = await fetch('http://localhost:8000/api/analyze/benchmark', {
+            const res = await fetch(`http://${hostname}:8000/api/analyze/benchmark`, {
                 method: 'POST',
                 body: JSON.stringify({ query1, query2 }),
                 headers: {

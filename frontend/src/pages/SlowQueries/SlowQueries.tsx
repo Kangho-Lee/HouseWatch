@@ -3,6 +3,9 @@ import { Select, Table, Typography, notification } from 'antd'
 import { useHistory } from 'react-router-dom'
 import { ColumnType } from 'antd/es/table'
 const { Paragraph } = Typography
+import { ENVIRONEMT_CONSTANTS } from 'lib/constants'
+
+const hostname = ENVIRONEMT_CONSTANTS.CLICKHOUSE_HOST
 
 interface SlowQueryData {
     normalized_query: string
@@ -76,7 +79,7 @@ export default function CollapsibleTable() {
         setSlowQueries([])
         setLoadingSlowQueries(true)
         try {
-            const res = await fetch(`http://localhost:8000/api/analyze/slow_queries?time_range=${timeRange}`)
+            const res = await fetch(`http://${hostname}:8000/api/analyze/slow_queries?time_range=${timeRange}`)
             const resJson = await res.json()
             const slowQueriesData = resJson.map((error: SlowQueryData, idx: number) => ({ key: idx, ...error }))
             setSlowQueries(slowQueriesData)

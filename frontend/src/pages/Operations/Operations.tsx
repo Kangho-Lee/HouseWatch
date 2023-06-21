@@ -10,6 +10,9 @@ import { Button, Input, Progress, Table, Tabs, notification } from 'antd'
 import TextArea from 'antd/es/input/TextArea'
 import { ColumnType } from 'antd/es/table'
 import { isoTimestampToHumanReadable } from '../../utils/dateUtils'
+import { ENVIRONEMT_CONSTANTS } from 'lib/constants'
+
+const hostname = ENVIRONEMT_CONSTANTS.CLICKHOUSE_HOST
 
 const OPERATION_STATUS_TO_HUMAN = {
     0: 'Not started',
@@ -77,7 +80,7 @@ export function OperationsList(): JSX.Element {
     const [operations, setOperations] = useState([])
 
     const fetchAndUpdateOperationsIfNeeded = async () => {
-        const response = await fetch('http://localhost:8000/api/async_migrations')
+        const response = await fetch(`http://${hostname}:8000/api/async_migrations`)
         const responseJson = await response.json()
         const results = responseJson.results
         if (JSON.stringify(results) !== JSON.stringify(operations)) {
@@ -86,7 +89,7 @@ export function OperationsList(): JSX.Element {
     }
 
     const triggerOperation = async (id) => {
-        await fetch(`http://localhost:8000/api/async_migrations/${id}/trigger`, { method: 'POST' })
+        await fetch(`http://${hostname}:8000/api/async_migrations/${id}/trigger`, { method: 'POST' })
         await fetchAndUpdateOperationsIfNeeded()
     }
 
@@ -174,7 +177,7 @@ export function CreateNewOperation(): JSX.Element {
             operationData[key] = value
         }
 
-        const res = await fetch('http://localhost:8000/api/async_migrations', {
+        const res = await fetch(`http://${hostname}:8000/api/async_migrations`, {
             method: 'POST',
             body: JSON.stringify(operationData),
             headers: {

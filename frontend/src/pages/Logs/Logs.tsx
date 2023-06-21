@@ -1,7 +1,9 @@
 import { Table, Typography, Input, Card, ConfigProvider, Empty } from 'antd'
 import React, { useEffect, useState } from 'react'
 import { Column } from '@ant-design/charts'
+import { ENVIRONEMT_CONSTANTS } from 'lib/constants'
 
+const hostname = ENVIRONEMT_CONSTANTS.CLICKHOUSE_HOST
 const { Paragraph } = Typography
 
 export default function Logs() {
@@ -37,8 +39,7 @@ export default function Logs() {
             },
         },
     ]
-
-    const url = 'http://localhost:8000/api/analyze/logs'
+    const url = `http://${hostname}:8000/api/analyze/logs`
 
     const fetchLogs = async (messageIlike = '') => {
         setLoadingLogs(true)
@@ -60,7 +61,7 @@ export default function Logs() {
 
     const fetchLogsFrequency = async (messageIlike = '') => {
         setLoadingLogsFrequency(true)
-        const res = await fetch('http://localhost:8000/api/analyze/logs_frequency', {
+        const res = await fetch(`http://${hostname}:8000/api/analyze/logs_frequency`, {
             method: 'POST',
             body: JSON.stringify({ message_ilike: messageIlike }),
             headers: {

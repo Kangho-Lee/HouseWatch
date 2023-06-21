@@ -3,6 +3,9 @@ import { Line } from '@ant-design/charts'
 import { Card, Col, Row, Tooltip, notification } from 'antd'
 import { InfoCircleOutlined } from '@ant-design/icons'
 import { clickhouseTips } from './tips'
+import { ENVIRONEMT_CONSTANTS } from 'lib/constants'
+
+const hostname = ENVIRONEMT_CONSTANTS.CLICKHOUSE_HOST
 
 interface MetricData {
     day_start: string
@@ -26,7 +29,7 @@ export default function Overview() {
 
     const loadData = async () => {
         try {
-            const res = await fetch('http://localhost:8000/api/analyze/query_graphs')
+            const res = await fetch(`http://${hostname}:8000/api/analyze/query_graphs`)
             const resJson = await res.json()
             const execution_count = resJson.execution_count
             const memory_usage = resJson.memory_usage

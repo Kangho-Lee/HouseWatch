@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react'
 import { Table, notification } from 'antd'
 import { ColumnsType } from 'antd/es/table'
 import { isoTimestampToHumanReadable } from '../../utils/dateUtils'
+import { ENVIRONEMT_CONSTANTS } from 'lib/constants'
+
+const hostname = ENVIRONEMT_CONSTANTS.CLICKHOUSE_HOST
 
 interface ErrorData {
     name: string
@@ -32,7 +35,7 @@ export default function CollapsibleTable() {
 
     const loadData = async () => {
         try {
-            const res = await fetch('http://localhost:8000/api/analyze/errors')
+            const res = await fetch(`http://${hostname}:8000/api/analyze/errors`)
             const resJson = await res.json()
 
             const slowQueriesData = resJson.map((error: ErrorData, idx: number) => ({ key: idx, ...error }))

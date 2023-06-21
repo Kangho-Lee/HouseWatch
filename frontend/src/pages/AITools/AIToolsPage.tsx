@@ -2,13 +2,16 @@ import React, { useEffect, useState } from 'react'
 import { Tabs } from 'antd'
 import { useHistory } from 'react-router-dom'
 import NaturalLanguageQueryEditor from './NaturalLanguageQueryEditor'
+import { ENVIRONEMT_CONSTANTS } from 'lib/constants'
+
+const hostname = ENVIRONEMT_CONSTANTS.CLICKHOUSE_HOST
 
 export default function AIToolsPage() {
     const history = useHistory()
     const [error, setError] = useState<string | null>(null)
 
     const loadData = async () => {
-        const res = await fetch('http://localhost:8000/api/analyze/ai_tools_available')
+        const res = await fetch(`http://${hostname}:8000/api/analyze/ai_tools_available`)
         const resJson = await res.json()
         if ('error' in resJson) {
             setError(resJson['error'])

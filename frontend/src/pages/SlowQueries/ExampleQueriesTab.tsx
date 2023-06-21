@@ -8,13 +8,16 @@ import Editor from 'react-simple-code-editor'
 // @ts-ignore
 import { Table, notification } from 'antd'
 import { NoDataSpinner, QueryDetailData } from './QueryDetail'
+import { ENVIRONEMT_CONSTANTS } from 'lib/constants'
+
+const hostname = ENVIRONEMT_CONSTANTS.CLICKHOUSE_HOST
 
 export default function ExampleQueriesTab({ query_hash }: { query_hash: string }) {
     const [data, setData] = useState<{ example_queries: QueryDetailData['example_queries'] } | null>(null)
 
     const loadData = async () => {
         try {
-            const res = await fetch(`http://localhost:8000/api/analyze/${query_hash}/query_examples`)
+            const res = await fetch(`http://${hostname}:8000/api/analyze/${query_hash}/query_examples`)
             const resJson = await res.json()
             setData(resJson)
         } catch {

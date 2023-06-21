@@ -8,13 +8,16 @@ import Editor from 'react-simple-code-editor'
 // @ts-ignore
 import { NoDataSpinner, QueryDetailData, copyToClipboard } from './QueryDetail'
 import { notification } from 'antd'
+import { ENVIRONEMT_CONSTANTS } from 'lib/constants'
+
+const hostname = ENVIRONEMT_CONSTANTS.CLICKHOUSE_HOST
 
 export default function ExplainTab({ query_hash }: { query_hash: string }) {
     const [data, setData] = useState<{ explain: QueryDetailData['explain'] } | null>(null)
 
     const loadData = async () => {
         try {
-            const res = await fetch(`http://localhost:8000/api/analyze/${query_hash}/query_explain`)
+            const res = await fetch(`http://${hostname}:8000/api/analyze/${query_hash}/query_explain`)
             const resJson = await res.json()
             setData(resJson)
         } catch {

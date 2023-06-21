@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { Pie } from '@ant-design/plots'
 import { Card, Spin, Row, Col, notification } from 'antd'
+import { ENVIRONEMT_CONSTANTS } from 'lib/constants'
+
+const hostname = ENVIRONEMT_CONSTANTS.CLICKHOUSE_HOST
 
 interface NodeData {
     node: string
@@ -13,7 +16,7 @@ export function DiskUsage(): JSX.Element {
 
     const loadData = async () => {
         try {
-            const res = await fetch('http://localhost:8000/api/analyze/cluster_overview')
+            const res = await fetch(`http://${hostname}:8000/api/analyze/cluster_overview`)
             const resJson = await res.json()
             setClusterOverviewData(resJson)
         } catch {

@@ -5,6 +5,9 @@ import { Treemap } from '@ant-design/charts'
 import { Table, Tabs, TabsProps, notification } from 'antd'
 
 import { useHistory } from 'react-router-dom'
+import { ENVIRONEMT_CONSTANTS } from 'lib/constants'
+
+const hostname = ENVIRONEMT_CONSTANTS.CLICKHOUSE_HOST
 
 function TableTreeMap({ schema, dataIndex }) {
     const config = {
@@ -50,7 +53,7 @@ function TableTreeMap({ schema, dataIndex }) {
 export function ColumnsData({ table }: { table: string }): JSX.Element {
     const [schema, setSchema] = React.useState([])
 
-    const url = `http://localhost:8000/api/analyze/${table}/schema`
+    const url = `http://${hostname}:8000/api/analyze/${table}/schema`
 
     useEffect
 
@@ -91,7 +94,7 @@ export function PartsData({ table }: { table: string }): JSX.Element {
 
     const loadData = async () => {
         try {
-            const res = await fetch(`http://localhost:8000/api/analyze/${table}/parts`)
+            const res = await fetch(`http://${hostname}:8000/api/analyze/${table}/parts`)
             const resJson = await res.json()
             setPartData(resJson)
         } catch {
