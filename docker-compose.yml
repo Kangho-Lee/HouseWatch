@@ -6,12 +6,12 @@ services:
         environment:
             REDIS_URL: redis://redis:6379
             CLICKHOUSE_HOST: $CLICKHOUSE_HOST
-            CLICKHOUSE_DATABASE: $CLICKHOUSE_DATABASE
-            CLICKHOUSE_USER: $CLICKHOUSE_USER
-            CLICKHOUSE_PASSWORD: $CLICKHOUSE_PASSWORD
-            CLICKHOUSE_CLUSTER: $CLICKHOUSE_CLUSTER
-            CLICKHOUSE_SECURE: $CLICKHOUSE_SECURE
-            CLICKHOUSE_VERIFY: $CLICKHOUSE_VERIFY
+            CLICKHOUSE_DATABASE: zetta
+            CLICKHOUSE_USER: zepeto-data
+            CLICKHOUSE_PASSWORD: zetta1234
+            CLICKHOUSE_CLUSTER: zetta_cluster
+            CLICKHOUSE_SECURE: false
+            CLICKHOUSE_VERIFY: false
             CLICKHOUSE_CA: $CLICKHOUSE_CA
         command:
             - bash
@@ -40,12 +40,12 @@ services:
         environment:
             REDIS_URL: redis://redis:6379
             CLICKHOUSE_HOST: $CLICKHOUSE_HOST
-            CLICKHOUSE_DATABASE: $CLICKHOUSE_DATABASE
-            CLICKHOUSE_USER: $CLICKHOUSE_USER
-            CLICKHOUSE_PASSWORD: $CLICKHOUSE_PASSWORD
-            CLICKHOUSE_CLUSTER: $CLICKHOUSE_CLUSTER
-            CLICKHOUSE_SECURE: $CLICKHOUSE_SECURE
-            CLICKHOUSE_VERIFY: $CLICKHOUSE_VERIFY
+            CLICKHOUSE_DATABASE: zetta
+            CLICKHOUSE_USER: zepeto-data
+            CLICKHOUSE_PASSWORD: zetta1234
+            CLICKHOUSE_CLUSTER: zetta_cluster
+            CLICKHOUSE_SECURE: false
+            CLICKHOUSE_VERIFY: false
             CLICKHOUSE_CA: $CLICKHOUSE_CA
         command:
             - ./bin/celery
