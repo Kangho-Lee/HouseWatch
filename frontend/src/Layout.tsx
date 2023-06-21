@@ -29,9 +29,9 @@ import { ConfigProvider, MenuProps } from 'antd'
 import { Layout, Menu } from 'antd'
 import QueryEditorPage from './pages/QueryEditor/QueryEditorPage'
 import AIToolsPage from './pages/AITools/AIToolsPage'
-import { ENVIRONEMT_CONSTANTS } from 'lib/constants'
+import { ENVIRONEMT_CONSTANTS } from 'src/lib/constants'
 
-const clickhouse_hostname = ENVIRONEMT_CONSTANTS.CLICKHOUSE_HOST
+const clickhouse_hostname = object.keys(ENVIRONEMT_CONSTANTS.CLICKHOUSE_HOST)
 
 const { Header, Content, Footer, Sider } = Layout
 
